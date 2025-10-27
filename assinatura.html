@@ -1,0 +1,24 @@
+<button id="btnAssinar">Assinar Plano</button>
+
+<script src="config.js"></script>
+<script>
+  document.getElementById("btnAssinar").addEventListener("click", async () => {
+    const token = localStorage.getItem("authToken");
+
+    const res = await fetch(`${window.ENV.API_URL}/api/payments/create`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        plan_name: "Assinatura Premium MedRecall",
+        amount: 19.90
+      })
+    });
+
+    const data = await res.json();
+    console.log("Pagamento:", data);
+    alert("Pagamento criado! Acompanhe o PIX ou cartão no painel.");
+  });
+</script>

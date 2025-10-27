@@ -1,0 +1,38 @@
+<!-- frontend/dashboard.html -->
+<!DOCTYPE html>
+<html lang="pt-br" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedRecall - Aplicação</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: 'class' }</script>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- React / Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-200">
+  <script src="config.js"></script>
+
+  <!-- 🛡️ Guarda: exige login + assinatura ativa -->
+  <script src="auth/auth.js"></script>
+
+  <div id="root"></div>
+
+  <!-- utilitários da view -->
+  <script src="views/dashboard-script.js"></script>
+
+  <!-- API UMD (uma única inclusão) -->
+  <script src="api/apiService.js"></script>
+
+  <!-- App principal -->
+  <script type="text/babel" src="medrecall_full.js"></script>
+  
+</body>
+</html>
