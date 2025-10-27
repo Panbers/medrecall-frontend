@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       // 🔹 1️⃣ Faz login
-      const response = await fetch('https://medrecall-backend.onrender.com/api/login', {
+      const response = await fetch('https://medrecall-backend.onrender.com/api/initial-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -68,4 +68,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
