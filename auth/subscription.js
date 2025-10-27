@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('authToken');
 
     try {
-      const response = await fetch('http://localhost:3000/api/payments/create', {
+      const response = await fetch('https://medrecall-backend.onrender.com/api/payments/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,3 +37,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
