@@ -1,4 +1,4 @@
-// ✅ LOGIN ATUALIZADO - sem salvar dados compartilhados no navegador
+// ✅ LOGIN ATUALIZADO PARA PRODUÇÃO (Render + Vercel)
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.getElementById('login-form');
   const emailInput = document.getElementById('email');
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const password = passwordInput.value;
 
     try {
-      // 🔹 1️⃣ Faz login
-      const response = await fetch('https://medrecall-backend.onrender.com/api/initial-data', {
+      // 🔹 Login com backend hospedado
+      const response = await fetch('https://medrecall-backend.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // 🔹 2️⃣ Extrai dados do backend
       const data = await response.json();
       const user = data.user;
       const token = data.token;
@@ -33,14 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log("👤 Usuário logado:", user);
       console.log("🔑 Token JWT salvo:", token);
 
-      // 🔹 3️⃣ Salva autenticação (sessão)
+      // 🔹 Salva autenticação
       localStorage.setItem('token', token);
-      
       localStorage.setItem('userData', JSON.stringify(user));
 
-      // 🔹 4️⃣ Teste: apenas verifica se o banco está respondendo
+      // 🔹 Busca dados iniciais direto do banco (Render)
       try {
-        const initResponse = await fetch('http://localhost:3000/api/initial-data', {
+        const initResponse = await fetch('https://medrecall-backend.onrender.com/api/initial-data', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -54,21 +52,16 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('❌ Erro ao buscar dados do banco:', loadErr);
       }
 
-      // 🔹 5️⃣ Redirecionamento conforme assinatura
+      // 🔹 Redireciona com base na assinatura
       if (user.subscription_status === 'active') {
-        console.log("Assinatura ativa. Indo para o dashboard...");
         window.location.href = 'dashboard.html';
       } else {
-        console.log("Sem assinatura ativa. Indo para a página de assinatura...");
         window.location.href = 'subscription.html';
       }
 
     } catch (error) {
       console.error('❌ Erro na requisição:', error);
-      errorMessage.textContent = 'Não foi possível conectar ao servidor. Verifique sua conexão.';
+      errorMessage.textContent = 'Não foi possível conectar ao servidor.';
     }
   });
 });
-
-
-
