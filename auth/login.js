@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log("🔑 Token JWT salvo:", token);
 
       // 🔹 3️⃣ Salva autenticação (sessão)
-      localStorage.setItem('authToken', token);
+      localStorage.setItem('token', token);
+      
       localStorage.setItem('userData', JSON.stringify(user));
 
       // 🔹 4️⃣ Teste: apenas verifica se o banco está respondendo
@@ -68,5 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
 
