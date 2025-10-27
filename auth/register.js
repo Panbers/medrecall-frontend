@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 2. Envia os dados para a sua API de registro
-            const response = await fetch('http://localhost:3000/api/register', {
+            const response = await fetch('https://medrecall-backend.onrender.com/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
@@ -42,4 +42,5 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.textContent = 'Falha na comunicação com o servidor.';
         }
     });
+
 });
