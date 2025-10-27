@@ -1,6 +1,7 @@
 // auth.js - O novo guarda, agora verificando também a assinatura
 
-const token = localStorage.getItem('authToken');
+const token = localStorage.getItem('token'); // <-- atualizado
+
 const userDataString = localStorage.getItem('userData');
 
 if (!token || !userDataString) {
@@ -19,4 +20,5 @@ if (!token || !userDataString) {
     }
     // Se a assinatura for 'active', o script termina e a página do dashboard continua carregando.
     console.log("Guarda: Acesso permitido.");
+
 }
