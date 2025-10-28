@@ -30,7 +30,7 @@
     <button id="logout-btn" class="mt-4 text-sm text-slate-500 hover:text-slate-400">Sair da conta</button>
   </div>
 
-  <script src="config.js"></script>
+  <script type="module" src="config.js"></script>
   <script>
     const mp = new MercadoPago(window.ENV.MP_PUBLIC_KEY);
     const token = localStorage.getItem("authToken");
@@ -109,3 +109,4 @@
   </script>
 </body>
 </html>
+
