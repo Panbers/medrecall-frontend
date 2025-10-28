@@ -22,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 2. Envia os dados para a sua API de registro
-            const response = await fetch('https://medrecall-backend.onrender.com/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
+            const response = await fetch("https://medrecall-backend.onrender.com/api/register", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email, password })
             });
+
 
             if (response.ok) {
                 // 3. Sucesso!
@@ -43,3 +44,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
